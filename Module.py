@@ -31,7 +31,7 @@ class Library:
         book16 = Book("Macondo", "016", "Gabriel Garcia Marquez", "Magical realism")
         book17 = Book("Dracula", "017", "Bram Stoker", "terror")
         book18 = Book("Frankenstein", "018", "Mary Shelley", "terror")
-
+        book19 = Book("A walk to remember", "019", "Nicholas Sparks", "Romantic")
 
         self.add_book(book0)
         self.add_book(book1)
@@ -52,7 +52,7 @@ class Library:
         self.add_book(book16)
         self.add_book(book17)
         self.add_book(book18)
-
+        self.add_book(book19)
 
 
     def add_book(self, book):
@@ -79,7 +79,7 @@ class Filter:
     def filter(self, books: list[Book]) -> list[Book]:
         return books
 
-class GenreFilter(filter):
+class GenreFilter(Filter):
     genre = str
     def __init__(self, genre) -> None:
         self.genre = genre 
@@ -89,9 +89,10 @@ class GenreFilter(filter):
         for book in books:
             if books[book].genre.lower()==self.genre.lower():
                 res.append(books[book])
-                return res 
+
+        return res 
             
-class AuthorFilter(filter):
+class AuthorFilter(Filter):
     author = str
     def __init__(self, author) -> None:
         self.author = author
@@ -101,7 +102,8 @@ class AuthorFilter(filter):
         for book in books:
              if books[book].author.lower()==self.author.lower():
                 res.append(books[book])
-                return res 
+
+        return res 
 
 library = Library()
 

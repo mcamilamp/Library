@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from Module import Library, Book, Filter, AuthorFilter, GenreFilter 
 
+
 library = Library()
 
 def order_book():
@@ -42,13 +43,13 @@ def filter_by_author():
             messagebox.showinfo("Info", message)
 
 window = Tk()
-window.title("Library: Under the Tree")
+window.title("Virtual Library: Under the Tree")
 window.geometry("560x600")
 window.configure(background="#cdd9ff")
 iconimage = PhotoImage(file="tree_489969.png")
 window.iconphoto(False, iconimage)
 
-title = Label(window, text="Under the Tree", font=('bold', 20))
+title = Label(window, text="Under the Tree", font=('bold', 20), fg="#758700")
 title.place(x=180, y=10)
 
 img = PhotoImage(file="tree.png")
@@ -59,34 +60,34 @@ image_label.place(x=150, y=60)
 
 # ///////////////////////////////////////////////////////////
 
-entry_label = Label(window, text="Enter the name of the book:")
+entry_label = Label(window, text="Enter the name of the book:", fg="#758700", font=('bold', 10))
 entry_label.place(x=110, y=340)
 
 entry = Entry(window)
 entry.place(x=110, y=370)
 
-show_books_btn = Button(window, text="Verify existence", command=order_book)
+show_books_btn = Button(window, text="Verify existence", command=order_book, bg="#758700", fg="white", relief=RAISED, borderwidth=3, padx=10, pady=5, bd=0, cursor="hand2")
 show_books_btn.place(x=110, y=400)
 
 # //////////////////////////////////////////////////////////
 
-entry_label2 = Label(window, text="Show books by genre:")
+entry_label2 = Label(window, text="Show books by genre:", fg="#758700", font=('bold', 10))
 entry_label2.place(x=110, y=450)
 
 Genre_entry = Entry(window)
 Genre_entry.place(x=110, y=480)
 
-show_author_btn = Button(window, text="Show Books", command=filter_by_genre)
+show_author_btn = Button(window, text="Show Books", command=filter_by_genre, bg="#758700", fg="white", relief=RAISED, borderwidth=3, padx=10, pady=5, bd=0, cursor="hand2")
 show_author_btn.place(x=110, y=508)
 
 # //////////////////////////////////////////////////////////
 
-entry_label3 = Label(window, text="Show books by Author:")
+entry_label3 = Label(window, text="Show books by Author:", fg="#758700", font=('bold', 10))
 entry_label3.place(x=310, y=450)
 
 Author_entry = Entry(window)
 Author_entry.place(x=310, y=480)
 
-show_genre_btn = Button(window, text="Show Books", command=filter_by_genre)
+show_genre_btn = Button(window, text="Show Books", command=filter_by_author, bg="#758700", fg="white", relief=RAISED, borderwidth=3, padx=10, pady=5, bd=0, cursor="hand2")
 show_genre_btn.place(x=310, y=508)
 window.mainloop()
