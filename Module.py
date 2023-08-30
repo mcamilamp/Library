@@ -6,10 +6,12 @@ class Book:
         self.genre = genre
         self.available = True
 
+
 class Library:
     def __init__(self):
         self.Books = {}
         self.initializeBooks()
+
 
     def initializeBooks(self):
         book0 = Book("To all the boys i loved Before", "000", "Jenny Han", "Romantic")
@@ -32,6 +34,7 @@ class Library:
         book17 = Book("Dracula", "017", "Bram Stoker", "terror")
         book18 = Book("Frankenstein", "018", "Mary Shelley", "terror")
         book19 = Book("A walk to remember", "019", "Nicholas Sparks", "Romantic")
+
 
         self.add_book(book0)
         self.add_book(book1)
@@ -58,6 +61,7 @@ class Library:
     def add_book(self, book):
         self.Books[book.id] = book
 
+
     def order_book(self, book_id):
         if book_id in self.Books:
             book = self.Books[book_id]
@@ -69,15 +73,18 @@ class Library:
         else:
             print(f"Book with ID {book_id} not found in the library.")
 
+
     def find_book_by_name(self, book_name):
         for book in self.Books.values():
             if book.name.lower() == book_name.lower():
                 return book
         return None
     
+
 class Filter:
     def filter(self, books: list[Book]) -> list[Book]:
         return books
+    
 
 class GenreFilter(Filter):
     genre = str
@@ -91,6 +98,7 @@ class GenreFilter(Filter):
                 res.append(books[book])
 
         return res 
+    
             
 class AuthorFilter(Filter):
     author = str
@@ -104,6 +112,7 @@ class AuthorFilter(Filter):
                 res.append(books[book])
 
         return res 
+
 
 library = Library()
 
