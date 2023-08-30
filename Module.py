@@ -24,7 +24,7 @@ class Library:
         book9 = Book("It Ends with Us", "009", "Collen Hoover", "Romantic")
         book10 = Book("The Love Hypothesis", "010", "Ali Hazelwood", "Romantic")
         book11 = Book("The Diary of a Young Girl", "011", "Anne", "Autobiography")
-        book12 = Book("The Love Hypothesis", "012", "Ali Hazelwood", "Romantic")
+        book12 = Book("Love on the Brain", "012", "Ali Hazelwood", "Romantic")
         book13 = Book("The One", "013", "Kiera Cass", "Romantic")
         book14 = Book("Obsidian ", "014", "Jennifer L. Armentrout", "Fiction")
         book15 = Book("Onyx", "015", "Jennifer L. Armentrout", "Fiction")
@@ -76,30 +76,32 @@ class Library:
         return None
     
 class Filter:
-    def filter(self, books: list[Book]):
+    def filter(self, books: list[Book]) -> list[Book]:
         return books
 
-class GenreFilter:
-    def __init__(self) -> None:
+class GenreFilter(filter):
+    genre = str
+    def __init__(self, genre) -> None:
         self.genre = genre 
 
-    def filter(self, books: list[Book]):
+    def filter(self, books: dict[str, Book])-> list[Book]:
         res = []
         for book in books:
-            if book.genre == self.genre:
-                res.append(book)
+            if books[book].genre.lower()==self.genre.lower():
+                res.append(books[book])
                 return res 
             
-class AuthorFilter:
-    def __init__(self) -> None:
-        self.author = AuthorFilter
+class AuthorFilter(filter):
+    author = str
+    def __init__(self, author) -> None:
+        self.author = author
     
-    def filter(self, books: list[Book]):
+    def filter(self, books: dict[str, Book])-> list[Book]:
         res = []
         for book in books:
-            if book.author == self.author:
-                res.append(book)
-                return res
+             if books[book].author.lower()==self.author.lower():
+                res.append(books[book])
+                return res 
 
 library = Library()
 

@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from Module import Library 
+from Module import Library, Book, Filter, AuthorFilter, GenreFilter 
 
 library = Library()
 
@@ -15,7 +15,31 @@ def order_book():
         else:
             messagebox.showinfo("Information", f"The book '{selected_book}' is not available")
             
+def filter_by_genre():
+    selected_genre = Genre_entry.get().strip()
+    if selected_genre:
+        filter = GenreFilter(selected_genre)
+        books: list[Book] = filter.filter(library.Books)
+        if len(books)== 0:
+            messagebox.showinfo("Info", f"There no book with genre: '{selected_genre}'")
+        else:
+            message = f"Book of genre '{selected_genre}': \n\n"
+            for book in books:
+                message += f"-{book.name} - {book.author}\n"
+            messagebox.showinfo("Info", message)
 
+def filter_by_author():
+    selected_author = Author_entry.get().strip()
+    if selected_author:
+        filter = AuthorFilter(selected_author)
+        books: list[Book] = filter.filter(library.Books)
+        if len(books)==0:
+            messagebox.showinfo("Info", f"There no book with Author: '{selected_author}'")
+        else:
+            message = f"Book of Author '{selected_author}': \n\n"
+            for book in books:
+                message += f"-{book.name} - {book.author}\n"
+            messagebox.showinfo("Info", message)
 
 window = Tk()
 window.title("Library: Under the Tree")
@@ -52,7 +76,7 @@ entry_label2.place(x=110, y=450)
 Genre_entry = Entry(window)
 Genre_entry.place(x=110, y=480)
 
-show_author_btn = Button(window, text="Show Books", command=order_book)
+show_author_btn = Button(window, text="Show Books", command=filter_by_genre)
 show_author_btn.place(x=110, y=508)
 
 # //////////////////////////////////////////////////////////
@@ -63,6 +87,6 @@ entry_label3.place(x=310, y=450)
 Author_entry = Entry(window)
 Author_entry.place(x=310, y=480)
 
-show_genre_btn = Button(window, text="Show Books", command=order_book)
+show_genre_btn = Button(window, text="Show Books", command=filter_by_genre)
 show_genre_btn.place(x=310, y=508)
 window.mainloop()
