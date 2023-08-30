@@ -16,6 +16,7 @@ def order_book():
             messagebox.showinfo("Information", f"The book '{selected_book}' is not available")
             
 
+
 window = Tk()
 window.title("Library: Under the Tree")
 window.geometry("560x600")
@@ -40,28 +41,28 @@ entry_label.place(x=110, y=340)
 entry = Entry(window)
 entry.place(x=110, y=370)
 
-button1 = Button(window, text="Verify existence", command=order_book)
-button1.place(x=110, y=400)
+show_books_btn = Button(window, text="Verify existence", command=order_book)
+show_books_btn.place(x=110, y=400)
 
 # //////////////////////////////////////////////////////////
 
 entry_label2 = Label(window, text="Show books by genre:")
 entry_label2.place(x=110, y=450)
 
-entry = Entry(window)
-entry.place(x=110, y=480)
+Genre_entry = Entry(window)
+Genre_entry.place(x=110, y=480)
 
-button1 = Button(window, text="Show Books", command=order_book)
-button1.place(x=110, y=508)
+show_author_btn = Button(window, text="Show Books", command=order_book)
+show_author_btn.place(x=110, y=508)
 
 # //////////////////////////////////////////////////////////
 
-entry_label2 = Label(window, text="Show books by Author:")
-entry_label2.place(x=310, y=450)
+entry_label3 = Label(window, text="Show books by Author:")
+entry_label3.place(x=310, y=450)
 
-entry = Entry(window)
-entry.place(x=310, y=480)
+Author_entry = Entry(window)
+Author_entry.place(x=310, y=480)
 
-button1 = Button(window, text="Show Books", command=order_book)
-button1.place(x=310, y=508)
+show_genre_btn = Button(window, text="Show Books", command=order_book)
+show_genre_btn.place(x=310, y=508)
 window.mainloop()
