@@ -62,7 +62,7 @@ class Library:
         self.Books[book.id] = book
 
 
-    def order_book(self, book_id):
+    def search_book(self, book_id):
         if book_id in self.Books:
             book = self.Books[book_id]
             if book.available:
@@ -82,7 +82,7 @@ class Library:
     
 
 class Filter:
-    def filter(self, books: list[Book]) -> list[Book]:
+    def filter(self, books: dict[Book]) -> dict[Book]:
         return books
     
 
@@ -91,7 +91,7 @@ class GenreFilter(Filter):
     def __init__(self, genre) -> None:
         self.genre = genre 
 
-    def filter(self, books: dict[str, Book])-> list[Book]:
+    def filter(self, books: dict[str, Book])-> dict[Book]:
         res = []
         for book in books:
             if books[book].genre.lower()==self.genre.lower():
@@ -105,7 +105,7 @@ class AuthorFilter(Filter):
     def __init__(self, author) -> None:
         self.author = author
     
-    def filter(self, books: dict[str, Book])-> list[Book]:
+    def filter(self, books: dict[str, Book])-> dict[Book]:
         res = []
         for book in books:
              if books[book].author.lower()==self.author.lower():

@@ -10,11 +10,12 @@ def search_book():
     if selected_book:
         book = library.find_book_by_name(selected_book)
         if book:
-            library.order_book(book.id)
+            library.search_book(book.id)
             messagebox.showinfo("Order", f"Yes, the book: '{book.name}' is available \n\nBook Information:\n\nAuthor: '{book.author}' \nID: '{book.id}' \nGenre: '{book.genre}' ")
             entry.delete(0, END)
         else:
             messagebox.showinfo("Information", f"The book '{selected_book}' is not available")
+
 
 
 def filter_by_genre():
